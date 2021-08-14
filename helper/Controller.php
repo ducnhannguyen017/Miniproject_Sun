@@ -1,12 +1,14 @@
 <?php
 class Controller{
 
-    public function model($model){
+    public function model($model)
+    {
         require_once "./models/".$model.".php";
         return new $model;
     }
 
-    public function view($view, $data=[]){
+    public function view($view, $data=[])
+    {
         require_once "./views/".$view.".php";
     }
 

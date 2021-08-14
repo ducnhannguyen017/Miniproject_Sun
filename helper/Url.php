@@ -5,12 +5,15 @@ class Url{
     protected $action;
     protected $params;
 
-    function __construct(){
+    function __construct()
+    {
  
-        if( isset($_GET["url"]) ){
-            $arr = explode("/", filter_var(trim($_GET["url"], "/")));
+        if( isset($_GET["url"]) )
+        {
+            $arr = explode("/", $_GET["url"]);
         }
-        else{
+        else
+        {
             $arr = ['login','index'];
         }
         $this->controller = $arr[0];
@@ -25,9 +28,7 @@ class Url{
         $this->controller=new $this->controller;
         $act=$this->action;
         $this->controller->$act();
-
     }
-
 }
 
 ?>
