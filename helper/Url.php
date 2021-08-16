@@ -23,7 +23,7 @@ class Url{
         $this->action = $arr[1];
 
         $this->params = array_slice($arr,2);
-        var_dump($this->params);
+        // var_dump($this->params);
 
         $this->controller=new $this->controller;
         $act=$this->action;
