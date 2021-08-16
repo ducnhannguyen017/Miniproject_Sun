@@ -49,7 +49,10 @@ class login extends Controller
             @$_SESSION['username'] = $this->username;
             @$_SESSION['password'] = $this->password;
 
-            $this->view('homeView');
+            // $this->view('homeView');
+            $_GET['url']='home/index';
+            header("Refresh:0");
+            // header('Location:/miniproject/login/postLogin');
         } 
         else 
         {

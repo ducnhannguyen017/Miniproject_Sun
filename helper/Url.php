@@ -1,8 +1,8 @@
 <?php
 class Url{
 
-    protected $controller;
-    protected $action;
+    protected $controller='login';
+    protected $action='index';
     protected $params;
 
     function __construct()
@@ -23,7 +23,6 @@ class Url{
         $this->action = $arr[1];
 
         $this->params = array_slice($arr,2);
-        var_dump($this->params);
 
         $this->controller=new $this->controller;
         $act=$this->action;
