@@ -13,8 +13,7 @@ class login extends Controller
         $user = $this->model('user');
         $list = $user->login(@$_POST['username'], md5(@$_POST['password']));
         // var_dump($list);
-        if (isset($list[0])) 
-        {
+        if (isset($list[0])) {
             $this->username = $list[0]['username'];
             $this->password = $list[0]['password'];
         }
@@ -24,24 +23,18 @@ class login extends Controller
                     element.classList.remove('hidden'); 
                 </script>";
         //validate
-        if ($_POST['username'] == '' || $_POST['password'] == '')
-        {
+        if ($_POST['username'] == '' || $_POST['password'] == '') {
             $message = "Bạn chưa điền đầy đủ thông tin";
-        } else 
-        {
+        } else {
             $message = "Tài khoản hoặc mật khẩu không chính xác";
         }
 
-        if (count($list) == 1) 
-        {
-            if (isset($_POST['remember'])) 
-            {
+        if (count($list) == 1) {
+            if (isset($_POST['remember'])) {
                 setcookie('username', $this->username, time() + 86400 * 30);
                 setcookie('password', $_POST['password'], time() + 86400 * 30);
                 setcookie('remember', 'checked', time() + 86400 * 30);
-            } 
-            else 
-            {
+            } else {
                 setcookie('username', '', time() + 86400 * 30);
                 setcookie('password', '', time() + 86400 * 30);
                 setcookie('remember', '', time() + 86400 * 30);
@@ -49,10 +42,12 @@ class login extends Controller
             @$_SESSION['username'] = $this->username;
             @$_SESSION['password'] = $this->password;
 
-            $this->view('homeView');
-        } 
-        else 
-        {
+            $book = $this->model('book');
+            $list_book = $book->listAllBook();
+            $_SESSION['list_book'] = $list_book;
+            // var_dump($_SESSION['list_book']);
+            $this->view('bookHomeView');
+        } else {
             $this->view('loginView', ['error' => $error, 'message' => $message]);
         }
     }
