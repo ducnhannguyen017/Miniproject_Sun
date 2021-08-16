@@ -82,45 +82,4 @@ if (!isset($_SESSION['username'])) {
     </div>
 </body>
 
-<script>
-    function createCookie(name, value, days) {
-        var expires;
-
-        if (days) {
-            var date = new Date();
-            date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
-            expires = "; expires=" + date.toGMTString();
-        } else {
-            expires = "";
-        }
-
-        document.cookie = escape(name) + "=" +
-            escape(value) + expires + "; path=/";
-    }
-
-    function editBook($bookid) {
-        // alert($bookid);
-        $(document).ready(function() {
-            createCookie('update_book', $bookid, 0.1);
-        });
-        window.location = '/miniproject/updateBook/index';
-    }
-
-    function deleteBook($bookid) {
-        $.ajax({
-            type: "POST",
-            url: '/miniproject/deleteBook/postDelete',
-            data: {
-                id: $bookid
-            },
-            success: function(data) {
-                alert(1);
-            },
-            error: function(xhr, status, error) {
-                console.error(xhr);
-            }
-        });
-    }
-</script>
-
 </html>
