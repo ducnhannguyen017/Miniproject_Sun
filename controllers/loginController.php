@@ -42,7 +42,7 @@ class loginController extends Controller
             $this->redirect('bookController/index','indexBook');
 
         } else {
-            $this->redirect('loginController/index','loginView', ['error' => $error, 'message' => $message]);
+            $this->view('loginView', ['error' => $error, 'message' => $message]);
         }
     }
 

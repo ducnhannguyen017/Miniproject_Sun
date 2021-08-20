@@ -16,7 +16,7 @@
         <div class="row d-flex justify-content-center ">
             <div class="col-md-5">
                 <h3 class="text-primary">Đăng nhập</h3>
-                <form method="POST" action="../loginController/postLogin" id="formSignin">
+                <form method="POST" action="/miniproject/loginController/postLogin" id="formSignin">
                     <div id="alert" class="alert alert-danger hidden"><?= isset($data['message'])?$data['message']:''; ?></div>
                     <div class="form-group">
                         <label for="username">Tên đăng nhập</label>

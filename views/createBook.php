@@ -45,7 +45,6 @@ $book = @$_SESSION['list_book'][$book_id];
     </div>
     <?php echo isset($data['error'])?$data['error']:''; ?>
 
-
 </body>
 
 </html>
