@@ -1,12 +1,20 @@
 <?php
 class loginController extends Controller
 {
-    // private $username;
-    // private $password;
+
 
     function index()
     {
-        $this->view('loginView');
+        $user = $this->model('user');
+        $token= $user->getToken(@$_COOKIE['token']);
+
+        if(isset($_COOKIE['token'])&&$token[0]['token']==$_COOKIE['token']){
+            $this->redirect('bookController/index','indexBook');
+        }
+        else{
+            $this->view('loginView');
+
+        }
     }
     function postLogin()
     {
@@ -31,6 +39,7 @@ class loginController extends Controller
                 setcookie('username', $username, time() + 86400 * 30);
                 setcookie('password', $password, time() + 86400 * 30);
                 setcookie('remember', 'checked', time() + 86400 * 30);
+                setcookie('token',$list[0]['token'],time() + 86400 * 30);
             } else {
                 setcookie('username', '', time() + 86400 * 30);
                 setcookie('password', '', time() + 86400 * 30);
